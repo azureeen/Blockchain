@@ -1,0 +1,43 @@
+<!-- templates/blockchain.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blockchain</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .block, .transactions { margin-bottom: 20px; }
+        .block-header { background-color: #f2f2f2; padding: 10px; }
+        .transaction { margin-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Blockchain</h1>
+    {% for block in blockchain %}
+        <div class="block">
+            <div class="block-header">
+                <strong>Block {{ block.index }}</strong>
+                <div>Proof: {{ block.proof }}</div>
+                <div>Hash: {{ block.hash }}</div>
+            </div>
+            <div class="transactions">
+                <strong>Transactions:</strong>
+                {% for transaction in block.transactions %}
+                    <div class="transaction">
+                        {{ transaction.sender }} -> {{ transaction.receiver }} : {{ transaction.amount }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+
+    <h2>Last 10 Transactions</h2>
+    <div class="transactions">
+        {% for transaction in last_10_transactions %}
+            <div class="transaction">
+                {{ transaction.sender }} -> {{ transaction.receiver }} : {{ transaction.amount }}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
