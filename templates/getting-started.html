@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - Flask Blockchain Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <nav class="bg-gray-800 p-4">
+            <div class="container mx-auto">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <a href="#" class="text-white text-3xl font-semibold">Blockchain App</a>
+                    </div>
+                    <div>
+                        <a href="/" class="text-white text-lg">Blockchain |</a>
+                        <a href="/documentation" class="text-white text-lg">Documentation</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    <div class="container mx-auto my-8">
+        <div class="bg-white p-6 rounded shadow">
+            <h1 class="text-3xl font-bold mb-4">Getting Started with the Flask Blockchain Project</h1>
+
+            <p class="mb-4">This guide will walk you through setting up and running the Flask Blockchain project on your local machine using Docker.</p>
+
+            <h2 class="text-2xl font-semibold mb-3">Prerequisites</h2>
+            <ul class="list-disc ml-6 mb-4">
+                <li>Docker</li>
+                <li>Docker Compose</li>
+            </ul>
+            <p>These tools are necessary to create and manage the containers in which the Flask application runs.</p>
+
+            <h2 class="text-2xl font-semibold mb-3">Installation Instructions</h2>
+            <ol class="list-decimal ml-6 mb-4">
+                <li><strong>Unzip the Project Folder:</strong> First, unzip the downloaded project folder. This folder contains all the necessary files, including the `docker-compose.yml` file which is crucial for setting up the Docker environment.</li>
+                <li><strong>Navigate to the Project Directory:</strong> Open your command line or terminal and navigate to the directory containing the unzipped project files. Use the `cd` command to change directories. For example:
+                    <div class="bg-gray-200 p-2 rounded mt-2">
+                        <pre><code>cd path/to/your/project-directory</code></pre>
+                    </div>
+                </li>
+                <li><strong>Starting the Application with Docker Compose:</strong> Once you are in the project directory, start the application by running the following Docker Compose command:
+                    <div class="bg-gray-200 p-2 rounded mt-2">
+                        <pre><code>docker-compose up -d</code></pre>
+                    </div>
+                </li>
+            </ol>
+
+            <h2 class="text-2xl font-semibold mb-3">Using the Application</h2>
+            <p class="mb-4">With the Docker containers running, the Flask app should now be up and accessible. You can interact with the application by visiting the various links provided in the project documentation.</p>
+
+                        <!-- Using the Application Section -->
+            <h2 class="text-2xl font-semibold mb-3">Using the Application</h2>
+            <p class="mb-4">With the Docker containers running, the Flask app should now be up and accessible. You can interact with the application by visiting the various links provided in the project documentation.</p>
+            <ul class="list-disc ml-6 mb-4">
+                <li>Open your web browser.</li>
+                <li>Navigate to the Flask app's URL (typically <code class="bg-gray-200 rounded p-1">http://localhost:5000</code> or a similar local address).</li>
+            </ul>
+
+            <!-- Exploring the Project Section -->
+            <h2 class="text-2xl font-semibold mb-3">Exploring the Project</h2>
+            <p>Try out the different functionalities of the Flask Blockchain project:</p>
+            <ul class="list-disc ml-6 mb-4">
+                <li>Add transactions</li>
+                <li>View the blockchain</li>
+                <li>Check specific transactions</li>
+                <li>View the last 10 transactions</li>
+            </ul>
+            <p>Each feature is accessible through its respective link or endpoint in the Flask application.</p>
+
+            <!-- Stopping the Application Section -->
+            <h2 class="text-2xl font-semibold mb-3">Stopping the Application</h2>
+            <p>When you're done exploring the application, you can stop the Docker containers by running:</p>
+            <div class="bg-gray-200 p-2 rounded mt-2">
+                <pre><code>docker-compose down</code></pre>
+            </div>
+            <p>This command shuts down the containers and cleans up any resources used.</p>
+
+            <!-- Troubleshooting Section -->
+            <h2 class="text-2xl font-semibold mb-3">Troubleshooting</h2>
+            <p>If you encounter any issues while setting up or running the project, ensure that:</p>
+            <ul class="list-disc ml-6 mb-4">
+                <li>Docker is running on your system.</li>
+                <li>You are in the correct project directory in your command line or terminal.</li>
+                <li>The ports required by the Flask application are not being used by another service.</li>
+            </ul>
+
+            <p class="italic">Enjoy exploring the Flask Blockchain project!</p>
+        </div>
+    </div>
+</body>
+</html>
+

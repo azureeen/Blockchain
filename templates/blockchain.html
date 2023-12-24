@@ -1,43 +1,96 @@
-<!-- templates/blockchain.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Blockchain</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .block, .transactions { margin-bottom: 20px; }
-        .block-header { background-color: #f2f2f2; padding: 10px; }
-        .transaction { margin-left: 20px; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Blockchain</h1>
-    {% for block in blockchain %}
-        <div class="block">
-            <div class="block-header">
-                <strong>Block {{ block.index }}</strong>
-                <div>Proof: {{ block.proof }}</div>
-                <div>Hash: {{ block.hash }}</div>
-            </div>
-            <div class="transactions">
-                <strong>Transactions:</strong>
-                {% for transaction in block.transactions %}
-                    <div class="transaction">
-                        {{ transaction.sender }} -> {{ transaction.receiver }} : {{ transaction.amount }}
-                    </div>
-                {% endfor %}
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div id="toast-container" class="fixed top-0 right-0 m-4"></div>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto">
+            <div class="flex items-center justify-between">
+                <div>
+                    <a href="#" class="text-white text-3xl font-semibold">Blockchain App</a>
+                </div>
+                <div>
+                    <a href="/documentation" class="text-white text-lg">Documentation</a> |
+                    <a href="/getting-started" class="text-white text-lg">Getting Started</a>
+                </div>
             </div>
         </div>
-    {% endfor %}
+    </nav>
 
-    <h2>Last 10 Transactions</h2>
-    <div class="transactions">
-        {% for transaction in last_10_transactions %}
-            <div class="transaction">
-                {{ transaction.sender }} -> {{ transaction.receiver }} : {{ transaction.amount }}
+    <div class="container mx-auto my-8">
+        <div class="bg-white p-8 rounded shadow">
+            <h2 class="text-2xl font-bold mb-4">Create Transaction</h2>
+            <div>
+                <input type="text" id="sender" placeholder="Sender" class="px-3 py-2 border rounded mr-2" required>
+                <input type="text" id="receiver" placeholder="Receiver" class="px-3 py-2 border rounded mr-2" required>
+                <input type="number" id="amount" placeholder="Amount" class="px-3 py-2 border rounded mr-2" min="1" max="1000" required>
+                <button id="submitTransaction" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit Transaction</button>
             </div>
-        {% endfor %}
+        </div>
+
+        <div class="container mx-auto my-8">
+            <div class="bg-white p-8 rounded shadow">
+                <h2 class="text-2xl font-bold mb-4">Generate 10 Transactions</h2>
+                <div>
+                    <input type="text" id="batchSender" placeholder="Sender" class="px-3 py-2 border rounded mr-2">
+                    <input type="text" id="batchReceiver" placeholder="Receiver" class="px-3 py-2 border rounded mr-2">
+                    <div id="amounts">
+                        <!-- Amount inputs will be inserted here -->
+                    </div>
+                    <button id="submitBatch" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit 10 Transactions</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blockchain Display Section -->
+        <div id="blockchainDisplay" class="bg-white p-8 rounded shadow mt-8">
+            <h2 class="text-2xl font-bold mb-4">Blockchain</h2>
+            <p class="text-gray-700">Nothing yet</p>
+            {% for block in blockchain %}
+                <div class="mb-4 p-4 bg-white shadow rounded">
+                    <div class="block-header mb-2">
+                        <strong class="text-lg font-semibold">Block {{ block.index }}</strong>
+                        <div class="text-gray-700">Proof: {{ block.proof }}</div>
+                        <div class="text-gray-600">Hash: {{ block.hash }}</div>
+                    </div>
+                    <div class="transactions">
+                        <strong class="text-md font-semibold">Transactions:</strong>
+                        {% for transaction in block.transactions %}
+                            <div class="transaction mt-1 pl-4 border-l-2 border-blue-500">
+                                <span class="text-blue-600">{{ transaction.sender }}</span> ->
+                                <span class="text-green-600">{{ transaction.receiver }}</span> :
+                                <span class="font-bold">{{ transaction.amount }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- Last 10 Transactions Display Section -->
+        <div id="lastTransactionsDisplay" class="bg-white p-8 rounded shadow mt-8">
+            <h2 class="text-2xl font-bold mb-4">Last 10 Transactions</h2>
+            <p class="text-gray-700">Nothing yet</p>
+            {% for transaction in last_10_transactions %}
+                <div class="transaction mb-2 p-3 bg-white shadow rounded">
+                    <span class="text-blue-600 font-semibold">{{ transaction.sender }}</span>
+                    <span class="mx-1">-></span>
+                    <span class="text-green-600 font-semibold">{{ transaction.receiver }}</span>
+                    <span class="mx-1">:</span>
+                    <span class="font-bold">{{ transaction.amount }}</span>
+                </div>
+            {% endfor %}
+
+        </div>
     </div>
+
+    <script src="../static/js/app.js"></script>
 </body>
 </html>
+

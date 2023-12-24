@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <nav class="bg-gray-800 p-4">
+            <div class="container mx-auto">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <a href="#" class="text-white text-3xl font-semibold">Blockchain App</a>
+                    </div>
+                    <div>
+                        <a href="/" class="text-white text-lg">Blockchain |</a>
+                        <a href="/getting-started" class="text-white text-lg">Getting Started</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    <div class="container mx-auto my-8">
+        <div class="bg-white p-8 rounded shadow">
+            <h1 class="text-3xl font-bold mb-4">Blockchain Application Documentation</h1>
+
+            <div class="bg-white p-8 rounded shadow mt-8">
+            <h2 class="text-2xl font-semibold mb-3">Overview</h2>
+            <p>This document provides an overview of the Flask-based blockchain application. It covers the main components and functionalities such as block creation, transaction handling, and the proof of work algorithm.</p>
+            </div>
+            <div class="bg-white p-8 rounded shadow mt-8">
+            <h2 class="text-2xl font-semibold mb-3">Blockchain Class</h2>
+            <p>The Blockchain class is the backbone of the application. It maintains the ledger, handles new transactions, and creates new blocks.</p>
+                <h3 class="text-xl font-semibold mb-2">Key Methods:</h3>
+                <ul class="list-disc ml-6 mb-4">
+                    <li><strong>new_block:</strong> Creates and adds a new block to the chain.</li>
+                    <li><strong>new_transaction:</strong> Adds a new transaction to the current transactions list.</li>
+                    <li><strong>proof_of_work:</strong> Implements the Proof of Work algorithm.</li>
+                    <li><strong>valid_proof:</strong> Validates a proof given the last proof.</li>
+                    <li><strong>show_last_10_transactions:</strong> Returns the last 10 transactions.</li>
+                    <li><strong>tamper:</strong> Alters a transaction for demonstration purposes.</li>
+                    <li><strong>check_transaction:</strong> Retrieves a specific transaction by its ID.</li>
+                </ul>
+                <h2 class="text-xl font-semibold mb-3">Genesis Block</h2>
+                <p>The genesis block is the first block in the blockchain. It is created with a predefined proof and a previous hash.</p>
+                <h2 class="text-xl font-semibold mb-3">Proof of Work Algorithm</h2>
+                <p>The proof of work algorithm requires finding a number that, when hashed with the previous block's proof, produces a hash with four leading zeroes.</p>
+            </div>
+            <div class="bg-white p-8 rounded shadow mt-8">
+                <h2 class="text-2xl font-bold mb-3">Flask Routes</h2>
+                <p>The application exposes several HTTP endpoints to interact with the blockchain.</p>
+                <h3 class="text-xl font-semibold mb-2">Main Endpoints:</h3>
+                <ul class="list-disc ml-6 mb-4">
+                    <li><strong>/transactions/new:</strong> Endpoint to submit a new transaction.</li>
+                    <li><strong>/chain:</strong> Endpoint to get the full blockchain.</li>
+                    <li><strong>/transactions/last:</strong> Endpoint to get the last 10 transactions.</li>
+                </ul>
+            </div>
+            <!-- API Reference Section -->
+            <div class="bg-white p-8 rounded shadow mt-8">
+                <h2 class="text-2xl font-bold mb-4">API Reference</h2>
+                <p>Detailed documentation of each API endpoint, including request/response formats and example calls.</p>
+
+                <h3 class="text-xl font-semibold mb-2">/transactions/new (POST)</h3>
+                <p>Adds a new transaction to the blockchain.</p>
+                <p><strong>Request:</strong> { "sender": "address", "receiver": "address", "amount": 10 }</p>
+                <p><strong>Response:</strong> { "message": "Transaction will be added to Block [index]" }</p>
+
+                <h3 class="text-xl font-semibold mb-2">/chain (GET)</h3>
+                <p>Retrieves the full blockchain.</p>
+                <p><strong>Response:</strong> { "chain": [...], "length": [length] }</p>
+
+                <h3 class="text-xl font-semibold mb-2">/transactions/last (GET)</h3>
+                <p>Gets the last 10 transactions from the blockchain.</p>
+                <p><strong>Response:</strong> [{...transaction data...}]</p>
+                <!-- More endpoints as needed -->
+            </div>
+
+
+            <!-- Architecture Overview Section -->
+            <div class="bg-white p-8 rounded shadow mt-8">
+                <h2 class="text-2xl font-bold mb-4">Architecture Overview</h2>
+                <p>This section provides a high-level overview of the blockchain architecture, focusing on the key components that make up the blockchain network.</p>
+
+                <h3 class="text-xl font-semibold mb-2">Key Components:</h3>
+                <ul class="list-disc ml-6 mb-4">
+                    <li><strong>Nodes:</strong> Each participant in the network operates a node. Nodes are responsible for maintaining a copy of the blockchain and participating in blockchain operations like transaction validation and block creation.</li>
+                    <li><strong>Blockchain:</strong> A decentralized and distributed ledger that records all transactions across the network. The blockchain is composed of a series of blocks linked together in a chain.</li>
+                    <li><strong>Blocks:</strong> Each block contains a set of transactions, a reference to the previous block (previous hash), and a unique solution to a cryptographic challenge (proof of work).</li>
+                    <li><strong>Transactions:</strong> The primary data structure that represents value transfer between participants. Transactions are validated and then added to a block.</li>
+                    <li><strong>Consensus Algorithm:</strong> A mechanism that ensures all nodes agree on the blockchain's current state. This Flask blockchain application uses a Proof of Work algorithm.</li>
+                </ul>
+
+                <!-- Insert diagrams or flowcharts if available -->
+                <!-- <img src="path_to_diagram" alt="Blockchain Architecture Diagram"> -->
+            </div>
+
+            <!-- Transaction Management Section -->
+            <div class="bg-white p-8 rounded shadow mt-8">
+                <h2 class="text-2xl font-bold mb-4">Transaction Management</h2>
+                <p>This section explains how transactions are created, validated, and added to the blockchain.</p>
+
+                <h3 class="text-xl font-semibold mb-2">Creating Transactions:</h3>
+                <p>Transactions are initiated by network participants. Each transaction includes essential information:</p>
+                <ul class="list-disc ml-6 mb-4">
+                    <li><strong>Sender:</strong> The address or identifier of the party sending value.</li>
+                    <li><strong>Receiver:</strong> The address or identifier of the receiving party.</li>
+                    <li><strong>Amount:</strong> The value or quantity being transferred.</li>
+                </ul>
+                <p>Transactions are broadcast to the network where nodes validate them based on predefined criteria such as signature validity and sufficient balance.</p>
+
+                <h3 class="text-xl font-semibold mb-2">Adding to Blocks:</h3>
+                <p>Once validated, transactions are grouped together into a block. The process of creating a new block involves solving a cryptographic challenge (proof of work). The first node to solve this challenge broadcasts the new block to the network, where other nodes verify and add it to their copy of the blockchain.</p>
+
+                <p>This process ensures that all transactions are recorded in a decentralized and tamper-resistant manner, providing security and integrity to the blockchain network.</p>
+            </div>
+
+            <!-- Block Structure Section -->
+            <div class="bg-white p-8 rounded shadow mt-8">
+                <h2 class="text-2xl font-bold mb-4">Block Structure</h2>
+                <p>Detailed description of the block data structure in the blockchain.</p>
+                <ul class="list-disc ml-6 mb-4">
+                    <li><strong>Index:</strong> The position of the block in the chain.</li>
+                    <li><strong>Timestamp:</strong> The time at which the block was created.</li>
+                    <li><strong>Transactions:</strong> A list of transactions included in the block.</li>
+                    <li><strong>Proof:</strong> The proof of work associated with the block.</li>
+                    <li><strong>Previous Hash:</strong> The hash of the previous block in the chain.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
